@@ -57,8 +57,9 @@ body {
   border-radius: 2.25rem;
   padding: 0;
   color: #fff;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
+  line-height: 4.5rem;
   cursor: pointer;
 }
 .header button:focus{
