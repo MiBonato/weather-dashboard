@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchWeather } from './weatherSlice'
 import { WeatherItem } from './WeatherItem'
-import { LoaderFullScreen } from '../utils/loaderFull'
+import { LoaderFullScreen } from '../utils/LoaderFull'
 import { toast } from 'react-toastify'
 
 const QUARTER_INTERVAL = 15 * 60 * 1000;
