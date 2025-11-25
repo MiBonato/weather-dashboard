@@ -1,0 +1,53 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios'
+
+const initialState = {
+    loading: false,
+    data: [],
+    error: '',
+}
+
+export const fetchWeather = createAsyncThunk('weather/fetchWeather', async({ latitude, longitude, label })=>
+    axios
+    .get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,weathercode,windspeed_10m,precipitation,cloudcover,is_day&daily=sunrise,sunset&timezone=auto`)
+    .then(response => ({
+        id: `${latitude},${longitude}`,
+        label,
+        latitude,
+        longitude,
+        weather: response.data,
+    }))
+)
+
+const weatherSlice = createSlice({
+    name: 'weather',
+    initialState,
+    reducers: {
+        removeLocation: (state, action) => {
+            const idToRemove = action.payload
+            state.data = state.data.filter(item => item.id !== idToRemove)
+        }
+    },
+    extraReducers: builder => {
+        builder.addCase(fetchWeather.pending, state => {
+            state.loading = true
+            state.error = ''
+        })
+        builder.addCase(fetchWeather.fulfilled, (state, action ) => {
+            state.loading = false
+
+            const newLocation = action.payload
+            const index = state.data.findIndex(item => item.id === newLocation.id)
+            index !== -1 ? state.data[index] = newLocation : state.data.push(newLocation)
+            
+            state.error = ''
+        })
+        builder.addCase(fetchWeather.rejected, (state, action ) => {
+            state.loading = false,
+            state.error = action.error.message
+        })
+    }
+})
+
+export const { removeLocation } = weatherSlice.actions
+export default weatherSlice.reducer
