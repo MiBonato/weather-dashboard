@@ -50,16 +50,15 @@ body {
   height: auto;
 }
 .header button {
-  width: 4.4rem;
-  height: 4.4rem;
+  width: 4.5rem;
+  height: 4.5rem;
   background-color: #00B3F0;
   border: 0;
-  border-radius: 2.2rem;
+  border-radius: 2.25rem;
   padding: 0;
   color: #fff;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
-  line-height: 4.4rem;
   cursor: pointer;
 }
 .header button:focus{
@@ -458,6 +457,9 @@ body {
   background-color: #00B3F0;
 }
 @media (max-width: 424px) {
+  .header {
+    font-size: 2rem;
+  }
   .wind {
     flex-wrap: wrap;
   }
