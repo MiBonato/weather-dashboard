@@ -52,7 +52,7 @@ export const WeatherDetail = ({ hourly, daily, currentTime}) => {
                         <div className="timeStamp">{formattedTime}</div>
                         <div className="weatherDetailMain">
                             <img
-                            src={`/${iconName}.svg`}
+                            src={`${iconName}.svg`}
                             alt={iconName}
                             width="48"
                             height="48"

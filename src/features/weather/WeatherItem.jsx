@@ -53,7 +53,7 @@ export const WeatherItem = ({ location }) => {
                         <img src="thermometer.svg" alt="thermometer" />{current.temperature}°C
                     </div>
                     <div className="currentWeather w-100">
-                        <img src={`/${iconName}.svg`} alt={iconName} />
+                        <img src={`${iconName}.svg`} alt={iconName} />
                     </div>
                 </div>
                 <div className="wind flex s-row jc-center w-100">
