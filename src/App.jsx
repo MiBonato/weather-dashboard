@@ -1,9 +1,9 @@
 import React, {  useState } from 'react'
-import Header from './features/layout/header'
-import { Modal } from './features/utils/modal'
-import { FormView } from './features/form/weatherForm'
-import { WeatherView } from './features/weather/weatherList'
-import Footer from './features/layout/footer'
+import Header from './features/layout/Header'
+import { Modal } from './features/utils/Modal'
+import { FormView } from './features/form/WeatherForm'
+import { WeatherView } from './features/weather/WeatherList'
+import Footer from './features/layout/Footer'
 import { ToastContainer } from 'react-toastify';
 import './style/App.css'
 import 'react-toastify/dist/ReactToastify.css';

@@ -1,16 +1,108 @@
-# React + Vite
+# 🌦️ Weather Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive weather dashboard built with React that allows users to monitor real-time weather conditions for multiple locations.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Add and manage multiple locations
+* Live weather data powered by Open-Meteo API
+* Hourly forecast with detailed parameters
+* Sunrise & sunset indicators
+* Precipitation tracking
+* Geolocation support ("Use my location")
+* Auto-refresh aligned with real update intervals
+* Search with auto-completion for cities and airports
+* Persistent data using localStorage
+* Responsive and mobile-friendly design
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* Redux Toolkit
+* Vite
+* Open-Meteo API
+* JavaScript (ES6+)
+* CSS / Flexbox
 
-## Expanding the ESLint configuration
+## 🌍 Live Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+👉 [https://MiBonato.github.io/weather-dashboard/](https://YOUR_USERNAME.github.io/weather-dashboard/)
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/MiBonato/weather-dashboard.git
+cd weather-dashboard
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the project locally:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+## 🧠 How It Works
+
+* Locations are added via a modal form with auto-completion
+* Weather data is fetched dynamically and refreshed every 15 minutes
+* Data is persisted across sessions using localStorage
+* Hourly forecasts provide detailed information such as temperature, wind, cloud coverage and precipitation
+
+## 📁 Project Structure
+
+```
+src/
+ ├── app/
+ │   ├── store.js
+ ├── features/
+ │   ├── form/
+ │   │   └── weatherForm.jsx
+ │   ├── layout/
+ │   │   └── header.jsx
+ │   │   └── footer.jsx
+ │   ├── utils/
+ │   │   └── loaderFull.jsx
+ │   │   └── localstorage.js
+ │   │   └── modal.jsx
+ │   │   └── weatherIcons.js
+ │   ├── weather/
+ │   │   └── WeatherItem.jsx
+ │   │   └── weatherList.jsx
+ │   │   └── weatherSlice.js
+ │   │   └── WeatherDetail.jsx
+ ├── style/
+ │   └── App.css
+ │   └── grid.css
+ ├── App.jsx
+ ├── main.jsx
+```
+
+## ✨ Future improvements
+
+* Favorite locations system
+* Weather alerts
+* Dark/Light theme toggle
+* Weekly forecast view
+* Map-based location selection
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+👨‍💻 Developed as a personal project to explore modern front-end architecture and real-time data visualization.
