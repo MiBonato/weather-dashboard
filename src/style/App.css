@@ -461,6 +461,10 @@ body {
   .header {
     font-size: 2rem;
   }
+  .header button {
+    background-color: #fff;
+    color: #00B3F0;
+  }
   .wind {
     flex-wrap: wrap;
   }
