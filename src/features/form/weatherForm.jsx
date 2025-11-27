@@ -51,9 +51,9 @@ export const FormView = ({ onClose }) => {
         setLoadingGeo(false);
       },
       (error) => {
-        toast.error(error);
         setErrorGeo("Impossible de récupérer votre position.");
         setLoadingGeo(false);
+        toast.error(error);
       }
     );
   };
@@ -116,6 +116,17 @@ export const FormView = ({ onClose }) => {
     };
   }, [query]);
 
+  useEffect(() => {
+    if (!errorSearch) return;
+    toast.error(errorSearch);
+  }, [errorSearch]);
+
+  useEffect(() => {
+    if (!errorGeo) return;
+    toast.error(errorGeo);
+  }, [errorGeo]);
+
+
   return (
     <div className="locationForm flex s-col m-row">
       <div className="locationFormAuto w-100 m-w-66">
@@ -124,8 +135,6 @@ export const FormView = ({ onClose }) => {
           <label for="localisationInput" className="w-100">Ville ou aéroport</label>
           {loadingSearch && (<div className="locationFormInfo"><img src="wind-toy-blue.svg" alt="loading"/></div>)}
         </div>
-
-        {errorSearch && ( toast.error(errorSearch))}
 
         {results.length > 0 && (
           <ul className="locationFormResults">
@@ -145,7 +154,6 @@ export const FormView = ({ onClose }) => {
         <button type="button" className="" onClick={handleUseMyLocation} disabled={loadingGeo}>
           {loadingGeo ? 'GeoLocalisation' : 'Utiliser ma position'}
         </button>
-        {errorGeo && (toast.error(errorGeo))}
       </div>
     </div>
   );
