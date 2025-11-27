@@ -13,13 +13,19 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   
   const { data } = useSelector((state) => state.weather)
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [modalType, setModalType] = useState(null); 
+
+  const openLocationModal = () => setModalType('location');
+  const openTutorialModal = () => setModalType('tutorial');
+  const closeModal = () => setModalType(null);
+
+  
   return (
     <>
-      <Header onOpenModal={() => setIsModalOpen(true)} />
+      <Header onOpenModal={openLocationModal} onOpenTutorial={openTutorialModal} />
       <main className="mainContent">
-        {(!data || data.lenght === 0 ) && <Tutorial /> }
+        {(!data || data.length === 0 ) && <Tutorial /> }
         <WeatherView />
       </main>
       <Footer />
@@ -33,8 +39,25 @@ function App() {
         draggable
         theme="light"
       />
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Ajouter une localisation" >
-        <FormView onClose={() => setIsModalOpen(false)} />
+
+      <Modal
+        isOpen={modalType !== null}
+        onClose={closeModal}
+        title={
+          modalType === 'location'
+            ? 'Ajouter une localisation'
+            : modalType === 'tutorial'
+              ? 'Utilisation'
+              : ''
+        }
+      >
+        {modalType === 'location' && (
+          <FormView onClose={closeModal} />
+        )}
+
+        {modalType === 'tutorial' && (
+          <Tutorial />
+        )}
       </Modal>
 
     </>
