@@ -13,6 +13,8 @@ export const WeatherView = () => {
     const { loading, data, error } = useSelector((state) => state.weather)
 
     useEffect(() => {
+      if (!data || data.length === 0) return;
+
       const refreshAllLocations = () => {
         data.forEach((location) => {
           if (!location.latitude || !location.longitude) return;
@@ -29,7 +31,6 @@ export const WeatherView = () => {
       };
 
       refreshAllLocations();
-
 
       const now = new Date();
       const minutes = now.getMinutes();
