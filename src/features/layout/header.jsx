@@ -1,4 +1,4 @@
-export default function header({ onOpenModal }) {
+export default function Header({ onOpenModal }) {
   return (
     <header className="header flex s-row jc-between ai-center w-100">
       <img src="clear-day.svg" alt="ajouter" />

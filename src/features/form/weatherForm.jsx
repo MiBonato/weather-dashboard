@@ -143,7 +143,7 @@ export const FormView = ({ onClose }) => {
       </div>
       <div className="locationFormGeo w-100 m-w-33">
         <button type="button" className="" onClick={handleUseMyLocation} disabled={loadingGeo}>
-          {loadingGeo ? 'Localisation' : 'Localiser ma position'}
+          {loadingGeo ? 'GeoLocalisation' : 'Utiliser ma position'}
         </button>
         {errorGeo && (toast.error(errorGeo))}
       </div>
