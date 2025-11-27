@@ -28,6 +28,9 @@ export const WeatherView = () => {
         });
       };
 
+      refreshAllLocations();
+
+
       const now = new Date();
       const minutes = now.getMinutes();
       const seconds = now.getSeconds();
