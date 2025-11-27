@@ -66,7 +66,7 @@ export const WeatherView = () => {
         clearTimeout(timeoutId);
         if (intervalId) clearInterval(intervalId);
       };
-    }, [data, dispatch]);
+    }, [data.length, dispatch]);
 
     useEffect(() => {
         if (error) {
