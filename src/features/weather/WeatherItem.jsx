@@ -2,26 +2,37 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { WeatherDetail } from './WeaverDetail'
 import { removeLocation } from './weatherSlice'
+import { getTemperatureCategory } from '../utils/temperature'
 import { getWeatherIconName } from '../utils/weatherIcons';
+import { windSpeedToBeaufort } from '../utils/windforce'
 
 export const WeatherItem = ({ location }) => {
-    const { label, latitude, longitude, weather } = location
-    const current = weather?.current_weather
-    const dispatch = useDispatch()
-
+    const dispatch = useDispatch();
+    const { id, label, latitude, longitude, weather } = location;
     const [isClosing, setIsClosing] = useState(false);
 
+    // securité rechargement state vide
+    if (!weather || !weather.current_weather || !weather.hourly) {
+        return (
+            <></>
+        )
+    }
+
+    const current = weather.current_weather;
     const date = current.time;
     const formattedTime = date.substring(11);
 
-    const handleRemove = (latitude, longitude) => {
-        setIsClosing(true);
-        setTimeout(() => {
-            dispatch(removeLocation(latitude,longitude));
-        }, 350);
-    }
+    const handleRemove = () => {
+      setIsClosing(true);
+      setTimeout(() => {
+        dispatch(removeLocation(id));
+      }, 350);
+    };
 
+
+    const iconTemperature = getTemperatureCategory(current.temperature)
     const iconName = getWeatherIconName(current.weathercode, current.is_day);
+    const iconWind = windSpeedToBeaufort(current.windspeed)
 
     const getNearestPrecipitation = (hourly, date) => {
       const ref = new Date(date).getTime();
@@ -50,7 +61,7 @@ export const WeatherItem = ({ location }) => {
                 <div className="predTtitle w-100">{label}</div>
                 <div className="predTemp w-100 flex jc-center">
                     <div className="w-100">
-                        <img src="thermometer.svg" alt="thermometer" />{current.temperature}°C
+                        <img src={`${iconTemperature}.svg`} alt="thermometer" />{current.temperature}°C
                     </div>
                     <div className="currentWeather w-100">
                         <img src={`${iconName}.svg`} alt={iconName} />
@@ -58,7 +69,7 @@ export const WeatherItem = ({ location }) => {
                 </div>
                 <div className="wind flex s-row jc-center w-100">
                     <div className="predWindSpeed flex w-33 jc-center">
-                        <img src="wind.svg" alt="wind" />
+                        <img src={`${iconWind.src}.svg`} alt={`${iconWind.alt}`} />
                         <span>{current.windspeed}km/h</span>
                     </div> 
                     <div className="predWindDirection flex w-33 jc-center">
