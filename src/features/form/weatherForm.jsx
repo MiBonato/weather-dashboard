@@ -132,7 +132,7 @@ export const FormView = ({ onClose }) => {
       <div className="locationFormAuto w-100 m-w-66">
         <div className="inputField">
           <input id="localisationInput" type="text" placeholder=" " value={query} onChange={(e) => setQuery(e.target.value)} />
-          <label for="localisationInput" className="w-100">Ville ou aéroport</label>
+          <label htmlFor="localisationInput" className="w-100">Ville ou aéroport</label>
           {loadingSearch && (<div className="locationFormInfo"><img src="wind-toy-blue.svg" alt="loading"/></div>)}
         </div>
 

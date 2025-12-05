@@ -173,10 +173,11 @@ body {
   width: 26rem;
   height: auto;
 }
-.wind {
+.skyInfo {
+  flex-wrap: wrap;
   padding-bottom: 2rem;
 }
-.predWindSpeed, .predWindDirection, .predRainDrop {
+.predWindSpeed, .predWindDirection, .predRainDrop, .predUvIndex {
   font-size: 2rem;
   padding-bottom: 2rem;
 }
@@ -239,7 +240,7 @@ body {
   top: -1rem;
   left: -1rem;
 }
-.predRainDrop img{
+.predRainDrop img, .predUvIndex img {
   width: 5rem;
   height: auto;
 }

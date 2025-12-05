@@ -9,7 +9,7 @@ const initialState = {
 
 export const fetchWeather = createAsyncThunk('weather/fetchWeather', async({ latitude, longitude, label })=>
     axios
-    .get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,weathercode,windspeed_10m,precipitation,cloudcover,is_day&daily=sunrise,sunset&timezone=auto`)
+    .get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,apparent_temperature,weathercode,windspeed_10m,windgusts_10m,winddirection_10m,precipitation,precipitation_probability,cloudcover,is_day,relativehumidity_2m,dewpoint_2m,visibility,uv_index,shortwave_radiation&daily=sunrise,sunset,uv_index_max,temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max&wind_speed_unit=kmh&precipitation_unit=mm&timezone=auto`)
     .then(response => ({
         id: `${latitude},${longitude}`,
         label,

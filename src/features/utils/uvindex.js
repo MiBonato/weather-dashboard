@@ -1,4 +1,4 @@
-export function uvIndexLevel(uvIndex) {
+export function getUvIndexLevel(uvIndex) {
   const level = Math.ceil(uvIndex);
   if (level <= 1) {
     return { src: 'uv-index-1', alt: 'UV-1: Faible' };

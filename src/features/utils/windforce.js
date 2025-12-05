@@ -1,4 +1,4 @@
-export function windSpeedToBeaufort(speedKmh) {
+export function getWindSpeedToBeaufort(speedKmh) {
   if (speedKmh < 1){
     return {src:'wind-beaufort-0', alt:'Vent calme'};
   }
