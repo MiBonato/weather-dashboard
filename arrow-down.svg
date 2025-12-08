@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="224 140 64 84"> 
+<path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" d="M256 146v72l-24-27.6 24 27.6 24-27.6">
+</path>
+<use xlink:href="#a" width="252" height="100" transform="translate(130 238)"/>
+</svg>
