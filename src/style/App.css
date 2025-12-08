@@ -18,6 +18,14 @@
     transform: translateY(0);
   }
 }
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 0.2rem #fff);
+  }
+  50% {
+    filter: drop-shadow(0 0 0.8rem #fff);
+  }
+}
 html { 
   font-size: 62.5% 
 }
@@ -135,8 +143,8 @@ body {
 }
 .removeItem {
     position: absolute;
-    top:1rem;
-    right:1rem;
+    top:1.5rem;
+    right:1.5rem;
 }
 .predTime {
     position: absolute;
@@ -144,101 +152,70 @@ body {
     left:1rem;
 }
 .predTtitle {
-  padding-top: 3rem;
+  padding-top: 1.5rem;
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
 }
 .predTemp {
-  text-align: center;
-  font-size: 5rem;
-  font-weight: 700;
   padding: 1.5rem 1.5rem 0;
   flex-wrap: wrap;
 }
 .predTemp img {
   position: relative;
-  top: 1.2rem;
-  width: 6rem;
+}
+.predTemp .mainInfo {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+}
+.predTemp .mainInfo img {
+  top: 0.6rem;
+  width: 4rem;
   height: auto;
+}
+.predTemp .subInfo {
+  font-size: 1.8rem;
+}
+.predTemp .subInfo img {
+  top: 0.1rem;
+  width: auto;
+  height: 1.6rem;
 }
 .currentWeather {
   position: relative;
-  height: 20rem;
+  height: 16rem;
 }
 .currentWeather img {
   position: absolute;
-  top: calc(50% - 13rem);
-  left: calc(50% - 13rem);
-  width: 26rem;
+  top: calc(50% - 10rem);
+  left: calc(50% - 10rem);
+  width: 20rem;
   height: auto;
 }
 .skyInfo {
   flex-wrap: wrap;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
 }
-.predWindSpeed, .predWindDirection, .predRainDrop, .predUvIndex {
+.predWindSpeed, .predRainDrop, .predUvIndex {
   font-size: 2rem;
-  padding-bottom: 2rem;
 }
-.predWindSpeed span, .predRainDrop span {
+.predWindSpeed span, .predRainDrop span, .predUvIndex span {
   line-height: 5rem;
 }
 .predWindSpeed img {
   width: 5rem;
   height: auto;
 }
+.predWindDirection {
+  position: relative;
+}
 .predWindDirection img {
-  margin-right: 2rem;
-  width: 5rem;
+  position: absolute;
+  width: 3rem;
   height: auto;
-}
-.compassContainer {
-  position: relative;
-}
-.compass {
-  position: relative;
-  width: 4rem;
-  height: 4rem;
-}
-.compass .north {
-  position: absolute;
-  top: -1.5rem;
-  left: calc(50% - 0.4335rem);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-}
-.compass .south {
-  bottom: -1.6rem;
-  left: calc(50% - 0.401rem);
-  position: absolute;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-}
-.compass .est {
-  position: absolute;
-  top: calc(50% - 0.7rem);
-  right: -1.6rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-}
-.compass .west {
-  position: absolute;
-  top: calc(50% - 0.7rem);
-  left: -1.6rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-}
-.predWindDirection .compass img {
-  position: absolute;
-  width: 6rem;
-  height: 6rem;
-  top: -1rem;
-  left: -1rem;
+  top: 1rem;
+  left: 0.5rem;
 }
 .predRainDrop img, .predUvIndex img {
   width: 5rem;
@@ -247,7 +224,7 @@ body {
 .weatherDetailContainer {
   position: relative;
   width: 100%;
-  height: 23.5rem;
+  height: 28.7rem;
 }
 .weatherDetail {
   position: absolute;
@@ -257,9 +234,9 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  padding-bottom: 1rem;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
+  cursor: grab;
 }
 .weatherDetail::-webkit-scrollbar {
   height: 0.8rem;
@@ -279,11 +256,6 @@ body {
   width: 0;
   height: 0;
 }
-.weatherDetail > div {
-  flex: 0 0 calc(33% - 1.5rem);
-  max-width: calc(33% - 1.5rem);
-  padding: 0 0.75rem;
-}
 .timeStamp {
   text-align: center;
   font-size: 1.8rem;
@@ -293,7 +265,7 @@ body {
   text-align: center;
 }
 .weatherDetailHours > div {
-  padding: 0.5rem 0 0;
+  padding: 1rem 0 0;
   line-height: 3rem;
   font-weight: 700;
 }
@@ -321,6 +293,20 @@ body {
 .sunrise > div, .sunset > div {
   text-align: center;
   font-size: 2rem;
+}
+.swiper-button-prev, .swiper-button-next {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
+  display: none;
+}
+.swiper-navigation-icon {
+  color: #fff;
+  max-width: 1.5rem;
+  height: auto;
+  animation: pulseGlow 1.2s infinite ease-in-out;
+  filter: drop-shadow(0 0 0.8rem #fff);
 }
 /* footer */
 .footer {
@@ -518,11 +504,6 @@ body {
     .weatherItem:nth-child(2n) > div {
       margin: 0 0 1.5rem 0.75rem;
     }
-    .weatherDetail > div {
-      flex: 0 0 calc(33% - 1.5rem);
-      max-width: calc(33% - 1.5rem);
-      padding: 0 0.75rem;
-    }
     .loaderFullScreen img {
       top: calc(50% - 23rem);
       width: 46rem;
@@ -545,11 +526,6 @@ body {
     .weatherItem:nth-child(3n) > div {
       margin: 0 0 1.5rem 0.75rem;
     }
-    .weatherDetail > div {
-      flex: 0 0 calc(25% - 1.5rem);
-      max-width: calc(25% - 1.5rem);
-      padding: 0 0.75rem;
-    }
     .loaderFullScreen img {
       top: calc(50% - 30rem);
       width: 60rem;
@@ -562,10 +538,5 @@ body {
     .weatherContainer {
         width: 100%;
         max-width: calc(160rem - 3rem);
-    }
-    .weatherDetail > div {
-      flex: 0 0 calc(20% - 1.5rem);
-      max-width: calc(20% - 1.5rem);
-      padding: 0 0.75rem;
     }
 }

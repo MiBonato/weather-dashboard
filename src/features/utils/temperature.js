@@ -1,15 +1,15 @@
 export function getTemperatureCategory(tempC) {
   if (tempC < 4) {
-    return 'thermometer-freezing';
+    return { src: 'thermometer-freezing', alt: 'gel' };
   }
   if (tempC < 15) {
-    return 'thermometer-cold';
+    return { src: 'thermometer-cold', alt: 'froid' };
   }
   if (tempC < 30) {
-    return 'thermometer';
+    return { src: 'thermometer', alt: 'modéré' };
   }
   if (tempC < 40) {
-    return 'thermometer-warm';
+    return { src: 'thermometer-warm', alt: 'chaud' };
   }
-  return 'thermometer-heatwave';
+  return { src: 'thermometer-heatwave', alt: 'canicule' };
 }
