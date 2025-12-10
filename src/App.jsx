@@ -4,7 +4,7 @@ import Header from './features/layout/Header'
 import { Modal } from './features/utils/Modal'
 import Tutorial from './features/layout/Tutorial'
 import { FormView } from './features/form/WeatherForm'
-import { WeatherView } from './features/weather/WeatherList'
+import { WeatherView } from './features/weather/WeatherView'
 import Footer from './features/layout/Footer'
 import { ToastContainer } from 'react-toastify';
 import './style/App.css'

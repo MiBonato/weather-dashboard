@@ -22,7 +22,6 @@ export const WeatherItem = ({ location }) => {
 
     const current = weather.current_weather;
     const date = current.time;
-    const formattedTime = date.substring(11);
 
     const handleRemove = () => {
       setIsClosing(true);
@@ -46,8 +45,9 @@ export const WeatherItem = ({ location }) => {
     todo : 
 
     fix pour 429
-    remplacer par timer actualisation
+    
     fixer responsive section du milieu
+    background
 
     modale : système d'onglet pour
     - search
@@ -59,7 +59,6 @@ export const WeatherItem = ({ location }) => {
         <div className={`weatherItem flex w-100 m-w-50 l-w-33 ` + (isClosing ? 'closing' : '' )}>
             <div className="fadeInFromLeft w-100 flex jc-center ai-center">
                 <div className="removeItem w-100" onClick={handleRemove}><img src="close-x.svg" alt="Fermer" className="close-icon"/></div>
-                <div className="predTime w-100">généré à {formattedTime}</div>
                 <div className="predTtitle w-100">{label}</div>
                 <div className="predTemp w-100 flex jc-center">
                     <div className="flex s-col jc-center ai-center w-100 ">

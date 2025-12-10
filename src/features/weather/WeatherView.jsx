@@ -18,7 +18,19 @@ export const WeatherView = () => {
     if (!data || data.length === 0 || hasInitialFetchRun.current) return;
     hasInitialFetchRun.current = true;
 
-    data.forEach((loc) => dispatch(fetchWeather(loc)));
+    const toFetch = [...data];
+
+    let i = 0;
+    const intervalId = setInterval(() => {
+      if (i >= toFetch.length) {
+        clearInterval(intervalId);
+        return;
+      }
+      dispatch(fetchWeather(toFetch[i]));
+      i++;
+    }, 1500);
+
+    return () => clearInterval(intervalId);
   }, [data, dispatch]);
 
   useEffect(() => {
