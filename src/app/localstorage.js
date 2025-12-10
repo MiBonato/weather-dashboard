@@ -1,5 +1,5 @@
 const PERSIST_KEY = 'weather_dashboard_state';
-const STORAGE_VERSION = "1.02";
+const STORAGE_VERSION = "1.03";
 
 /* maj storage pour le dev, toto => remove en fin de dev */
 /*

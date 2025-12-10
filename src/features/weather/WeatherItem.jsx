@@ -12,7 +12,6 @@ export const WeatherItem = ({ location }) => {
     const dispatch = useDispatch();
     const { id, label, weather } = location;
     const [isClosing, setIsClosing] = useState(false);
-    console.log(weather)
     // securité rechargement state vide
     if (!weather || !weather.current_weather || !weather.hourly) {
         return (
@@ -44,8 +43,6 @@ export const WeatherItem = ({ location }) => {
     /* 
     todo : 
 
-    fix pour 429
-    
     fixer responsive section du milieu
     background
 
