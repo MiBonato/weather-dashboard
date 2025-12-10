@@ -66,8 +66,8 @@ export const WeatherDetail = ({ hourly, daily, currentTime }) => {
           <div className="timeStamp">{formattedTime}</div>
           <div className="weatherDetailMain">
             <img
-              src={`${iconName}.svg`}
-              alt={iconName}
+              src={`${iconName.src}.svg`}
+              alt={iconName.alt}
               width="48"
               height="48"
             />
@@ -99,7 +99,7 @@ export const WeatherDetail = ({ hourly, daily, currentTime }) => {
             </div>
             <div className="w-100 flex s-row jc-center">
               <div className="w-50 flex jc-end">
-                <img src="raindrop-measure.svg" alt="raindrop-measure" width="30" height="30" />
+                <img src="raindrop.svg" alt="pluie en milimètre" width="30" height="30" />
               </div>
               <div className="w-50">{data.precipitation} mm</div>
             </div>
@@ -168,18 +168,18 @@ export const WeatherDetail = ({ hourly, daily, currentTime }) => {
   })
 
   // Config autoplay 
-  const autoplayConfig = {
-    delay: 4000,          // 4s 
+  /*const autoplayConfig = {
+    delay: 4000,          //
     disableOnInteraction: true,
     pauseOnMouseEnter: true,
-  };
+  };*/
 
   return (
     <div className="weatherDetail">
       <Swiper
         modules={[Navigation, Autoplay]}
         navigation       // flèches par défaut Swiper
-        autoplay={autoplayConfig} // false pour désactiver
+        autoplay={false} // false pour désactiver
         loop={false}
         slidesPerView={3}
         spaceBetween={0}

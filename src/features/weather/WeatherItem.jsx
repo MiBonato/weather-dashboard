@@ -33,9 +33,9 @@ export const WeatherItem = ({ location }) => {
 
 
     const iconTemperature = getTemperatureCategory(current.temperature);
-    const apparentTemp = getNearestHourlyValue(weather.hourly, 'apparent_temperature', date);
-    const maxTemp = getNearestHourlyValue(weather.daily, 'temperature_2m_max', date)
-    const minTemp = getNearestHourlyValue(weather.daily, 'temperature_2m_min', date)
+    const apparentTemp = weather.hourly.apparent_temperature[0];
+    const maxTemp = weather.daily.temperature_2m_max[0];
+    const minTemp = weather.daily.temperature_2m_min[0];
     const iconName = getWeatherIconName(current.weathercode, current.is_day);
     const iconWind = getWindSpeedToBeaufort(current.windspeed)
     const currentUv = getNearestHourlyValue(weather.hourly, 'uv_index', date);
@@ -44,12 +44,10 @@ export const WeatherItem = ({ location }) => {
 
     /* 
     todo : 
-    
-    revision de toutes les icones du temps dans le ciel
-
-    revision pluviometrie
 
     fix pour 429
+    remplacer par timer actualisation
+    fixer responsive section du milieu
 
     modale : système d'onglet pour
     - search
@@ -81,10 +79,10 @@ export const WeatherItem = ({ location }) => {
                         </div>
                     </div>
                     <div className="currentWeather w-100">
-                        <img src={`${iconName}.svg`} alt={iconName} />
+                        <img src={`${iconName.src}.svg`} alt={iconName.alt} />
                     </div>
                 </div>
-                <div className="skyInfo flex jc-center w-100">
+                <div className="skyInfo flex s-row jc-center w-100">
                     <div className="predWindSpeed flex w-33 jc-center">
                         <img src={`${iconWind.src}.svg`} alt={`${iconWind.alt}`} />
                         <span>{current.windspeed}km/h</span>
@@ -93,7 +91,7 @@ export const WeatherItem = ({ location }) => {
                         </div>
                     </div> 
                     <div className="predRainDrop flex w-33 jc-center">
-                        <img src="raindrop-measure.svg" alt="raindrop-measure" />
+                        <img src="raindrop.svg" alt="raindrop" />
                         <span>{currentPrecipitation} mm</span>
                     </div>
                     <div className="predUvIndex flex w-33 jc-center">

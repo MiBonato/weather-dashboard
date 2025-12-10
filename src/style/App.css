@@ -194,11 +194,10 @@ body {
   height: auto;
 }
 .skyInfo {
-  flex-wrap: wrap;
   padding-bottom: 1.5rem;
 }
 .predWindSpeed, .predRainDrop, .predUvIndex {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .predWindSpeed span, .predRainDrop span, .predUvIndex span {
   line-height: 5rem;
@@ -497,6 +496,9 @@ body {
 @media (min-width: 768px) {
     .header {
       font-size: 3rem;
+    }
+    .predWindSpeed, .predRainDrop, .predUvIndex {
+      font-size: 2rem;
     }
     .weatherItem:nth-child(2n + 1) > div {
       margin: 0 00.75rem 1.5rem 0;
