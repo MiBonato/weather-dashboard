@@ -78,15 +78,16 @@ export const WeatherView = () => {
 
   return (
     <div className="weatherContainer flex">
-      {data.length > 0 && (
-        <div className="weatherList flex w-100 jc-start">
-          {data.map((location) => (
-            <WeatherItem key={location.id} location={location} />
-          ))}
-        </div>
-      )}
-
+      <div className="weatherList flex w-100 jc-start">
+        {data.length > 0 && (
+          <>
+            {data.map((location) => (
+              <WeatherItem key={location.id} location={location} />
+            ))}
+          </>
+        )}
       {loading && <LoaderSmallScreen />}
+      </div>
     </div>
   );
 };
