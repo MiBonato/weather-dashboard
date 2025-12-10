@@ -54,7 +54,7 @@ export const WeatherItem = ({ location }) => {
 
     return (
         <div className={`weatherItem flex w-100 m-w-50 l-w-33 ` + (isClosing ? 'closing' : '' )}>
-            <div className="fadeInFromLeft w-100 flex jc-center ai-center">
+            <div className="fadeIn w-100 flex jc-center ai-center">
                 <div className="removeItem w-100" onClick={handleRemove}><img src="close-x.svg" alt="Fermer" className="close-icon"/></div>
                 <div className="predTtitle w-100">{label}</div>
                 <div className="predTemp w-100 flex jc-center">

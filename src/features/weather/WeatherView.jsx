@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchWeather } from './weatherSlice';
 import { WeatherItem } from './WeatherItem';
-import { LoaderFullScreen } from '../utils/LoaderFull';
+import { LoaderSmallScreen } from '../utils/LoaderSmall';
 import { toast } from 'react-toastify';
 
 const QUARTER_INTERVAL = 15 * 60 * 1000;
@@ -78,8 +78,6 @@ export const WeatherView = () => {
 
   return (
     <div className="weatherContainer flex">
-      {loading && <LoaderFullScreen />}
-
       {data.length > 0 && (
         <div className="weatherList flex w-100 jc-start">
           {data.map((location) => (
@@ -87,6 +85,8 @@ export const WeatherView = () => {
           ))}
         </div>
       )}
+
+      {loading && <LoaderSmallScreen />}
     </div>
   );
 };
