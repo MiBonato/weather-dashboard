@@ -185,10 +185,10 @@ export const WeatherDetail = ({ hourly, daily, currentTime }) => {
         navigation       // flèches par défaut Swiper
         autoplay={false} // false pour désactiver
         loop={false}
-        slidesPerView={3}
+        slidesPerView={2}
         spaceBetween={0}
         breakpoints={{
-          640: { slidesPerView: 3, spaceBetween: 0 },
+          425: { slidesPerView: 3, spaceBetween: 0 },
           768: { slidesPerView: 3, spaceBetween: 0 },
           1200: { slidesPerView: 4, spaceBetween: 0 },
         }}

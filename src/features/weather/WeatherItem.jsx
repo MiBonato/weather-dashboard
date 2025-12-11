@@ -45,7 +45,6 @@ export const WeatherItem = ({ location }) => {
     todo : 
 
     fixer responsive section du milieu
-    background
 
     modale : système d'onglet pour
     - search

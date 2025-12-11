@@ -9,6 +9,7 @@ import Footer from './features/layout/Footer'
 import { ToastContainer } from 'react-toastify';
 import './style/App.css'
 import 'react-toastify/dist/ReactToastify.css';
+import 'leaflet/dist/leaflet.css';
 
 function App() {
   

@@ -163,8 +163,13 @@ body {
   min-height: 66.2rem;
   flex-flow: wrap;
   border-radius: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
+}
+.bg-sunrise .weatherItem > div, .bg-day .weatherItem > div, .bg-sunset .weatherItem > div {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.bg-night .weatherItem > div {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .fadeIn {
   opacity: 0;
@@ -411,12 +416,54 @@ body {
   color: #000;
   padding: 0;
 }
+.modalBody .tabs {
+  padding-bottom: 1.5rem;
+  border-bottom: 0.1rem solid #48a7ff;
+  margin-bottom: 1.5rem;
+}
+.modalBody .tabs button:nth-child(1n) {
+  margin: 0 0.75rem 1.5rem;
+}
+.modalBody .tabs button:nth-child(3n + 1) {
+  margin: 0 0.75rem 1.5rem 0;
+}
+.modalBody .tabs button:nth-child(3n) {
+  margin: 0 0 1.5rem 0.75rem;
+}
+.locationForm button {
+  width: 100%;
+  border: 0.1rem solid #00B3F0;
+  border-radius: 0.4rem;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  color: #00B3F0;
+  text-align: left;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background-color: #fff;
+  cursor: pointer;
+}
+.locationForm button:hover, .locationForm button.tab--active {
+  color: #fff;
+  background-color: #00B3F0;
+}
+.locationForm p {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+}
+.locationGeo button {
+  width: auto;
+}
 .inputField {
   position: relative;
   padding: 0;
   margin: 0;
   width: 100%;
   height: 4.5rem;
+}
+.locationForm .inputField {
+  margin-top: 1.5rem;
 }
 .inputField input {
   width: 100%;
@@ -483,31 +530,8 @@ body {
 .locationFormResults li:last-child {
   padding: 0.75rem 0 1.5rem;
 }
-.locationFormResults li button {
-  width: 100%;
-  border: 0;
-  border-radius: 0.4rem;
-  padding: 0.75rem 1.5rem;
-  color: #fff;
-  text-align: left;
-  font-size: 1.8rem;
-  font-weight: 700;
-  background-color: #00B3F0;
-  cursor: pointer;
-}
 .locationFormGeo {
   padding: 1.5rem 0 0;
-}
-.locationFormGeo button {
-  width: 100%;
-  border: 0;
-  border-radius: 0.4rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.8rem;
-  color: #fff;
-  font-weight: 700;
-  background-color: #00B3F0;
-  cursor: pointer;
 }
 @media (max-width: 424px) {
   .header {
@@ -567,7 +591,7 @@ body {
       width: 60rem;
     }
     .modalContent {
-      max-width: calc(120rem - 3rem);
+      max-width: calc(80rem - 3rem);
     }
 }
 @media (min-width: 1600px) {
