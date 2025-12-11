@@ -1,18 +1,20 @@
-// src/components/MapLocationPicker.jsx
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 
-// (Optionnel) Fix des icônes par défaut de Leaflet dans certains bundlers
+// Fix import icônes
 import 'leaflet/dist/leaflet.css';
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
-import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
-import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+// Fix URL icônes Leaflet
+delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl,
-  iconUrl,
-  shadowUrl,
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
 });
 
 const ClickHandler = ({ onClick }) => {
@@ -26,8 +28,8 @@ const ClickHandler = ({ onClick }) => {
 };
 
 export const MapLocationPicker = ({
-  defaultCenter = { lat: 48.8566, lng: 2.3522 }, // Paris par défaut
-  defaultZoom = 5,
+  defaultCenter = { lat: 38.8226, lng: -38.2324 },
+  defaultZoom = 2,
   onConfirm,
 }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
@@ -35,10 +37,15 @@ export const MapLocationPicker = ({
 
   const handleMapClick = ({ lat, lng }) => {
     setSelectedPosition({ lat, lng });
-    // si aucun label saisi, on génère un label simple
-    if (!label) {
+
+    // Si aucun label n'est encore saisi, on pré-remplit avec Lat/Lon
+    if (!label.trim()) {
       setLabel(`Lat ${lat.toFixed(3)}, Lon ${lng.toFixed(3)}`);
     }
+  };
+
+  const handleLabelChange = (e) => {
+    setLabel(e.target.value);
   };
 
   const handleConfirm = () => {
@@ -47,24 +54,32 @@ export const MapLocationPicker = ({
     const payload = {
       latitude: selectedPosition.lat,
       longitude: selectedPosition.lng,
-      label: label || `Lat ${selectedPosition.lat.toFixed(3)}, Lon ${selectedPosition.lng.toFixed(3)}`,
+      label:
+        label && label.trim().length > 0
+          ? label
+          : `Lat ${selectedPosition.lat.toFixed(3)}, Lon ${selectedPosition.lng.toFixed(3)}`,
     };
 
     onConfirm(payload);
   };
 
   return (
-    <div className="mapLocationPicker">
+    <div
+      className="mapLocationPicker"
+      onClick={(e) => e.stopPropagation()} // Empêche la fermeture de la modale
+    >
       <MapContainer
         center={[defaultCenter.lat, defaultCenter.lng]}
         zoom={defaultZoom}
-        style={{ height: '300px', width: '100%' }}
+        style={{ height: '400px', width: '100%' }}
       >
         <TileLayer
-          attribution="&copy; OpenStreetMap contributors"
+          attribution="© OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
         <ClickHandler onClick={handleMapClick} />
+
         {selectedPosition && (
           <Marker position={[selectedPosition.lat, selectedPosition.lng]} />
         )}
@@ -74,21 +89,27 @@ export const MapLocationPicker = ({
         {selectedPosition ? (
           <>
             <p className="mapLocationCoords">
-              Position sélectionnée :  
-              <strong> {selectedPosition.lat.toFixed(4)} / {selectedPosition.lng.toFixed(4)}</strong>
+              Coordonnées : {selectedPosition.lat.toFixed(4)} - {selectedPosition.lng.toFixed(4)}
             </p>
-            <div className="inputField">
-              <label>Nom de la localisation (optionnel)</label>
-              <input
-                type="text"
-                value={label}
-                onChange={(e) => setLabel(e.target.value)}
-                placeholder="Ex : Bord de mer, Randonnée, etc."
-              />
+
+            <div className="mapLocationForm flex s-row">
+              <div className="inputField mapLocationInput w-66">
+                <input
+                  id="localisationMap"
+                  type="text"
+                  value={label}
+                  onChange={handleLabelChange}
+                  placeholder="Entrez un nom"
+                />
+                <label htmlFor="localisationMap">Nom de la localisation</label>
+              </div>
+
+              <div className="mapLocationBtn w-33 flex s-col jc-end">
+                <button type="button" onClick={handleConfirm}>
+                  Ajouter
+                </button>
+              </div>
             </div>
-            <button type="button" onClick={handleConfirm}>
-              Valider cette localisation
-            </button>
           </>
         ) : (
           <p className="mapLocationHint">

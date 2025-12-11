@@ -103,7 +103,7 @@ export const WeatherDetail = ({ hourly, daily, currentTime }) => {
 
             <div className="w-100 flex s-row jc-center">
               <div className="w-50 flex jc-end">
-                <img src="raindrop.svg" alt="pluie en milimètre" width="30" height="30" />
+                <img src="rain-height.svg" alt="pluie en milimètre" width="30" height="30" />
               </div>
               <div className="w-50">{data.precipitation}mm</div>
             </div>

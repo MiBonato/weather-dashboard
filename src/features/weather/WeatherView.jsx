@@ -31,8 +31,9 @@ export const WeatherView = () => {
     hasInitialFetchRun.current = true;
 
     data.forEach((loc) => dispatch(fetchWeather(loc)));
-    
-/*const toFetch = [...data];
+  
+  // test pour 429
+  /*const toFetch = [...data];
 
     let i = 0;
     const intervalId = setInterval(() => {

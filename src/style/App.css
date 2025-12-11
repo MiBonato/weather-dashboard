@@ -239,6 +239,9 @@ body {
 .predWindSpeed span, .predRainDrop span, .predUvIndex span {
   line-height: 5rem;
 }
+.d-desktop {
+  display: none;
+}
 .predWindSpeed img {
   width: 5rem;
   height: auto;
@@ -248,12 +251,17 @@ body {
 }
 .predWindDirection img {
   position: absolute;
-  width: 3rem;
+  width: 2rem;
   height: auto;
-  top: 1rem;
+  top: 1.5rem;
   left: 0.5rem;
 }
-.predRainDrop img, .predUvIndex img {
+.predRainDrop img {
+  width: 3rem;
+  height: auto;
+  margin-right: 1rem;
+}
+.predUvIndex img {
   width: 5rem;
   height: auto;
 }
@@ -377,7 +385,7 @@ body {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 1001;
 }
 .modalContent {
   position: absolute;
@@ -410,25 +418,21 @@ body {
   cursor: pointer;
 }
 .modalBody {
-  padding: 3rem 1.5rem 1.5rem;
+  padding: 1.5rem;
 }
 .modalBody .tutorial {
   color: #000;
   padding: 0;
 }
 .modalBody .tabs {
-  padding-bottom: 1.5rem;
   border-bottom: 0.1rem solid #48a7ff;
   margin-bottom: 1.5rem;
 }
-.modalBody .tabs button:nth-child(1n) {
-  margin: 0 0.75rem 1.5rem;
+.modalBody .tabs button {
+  text-align: center;
 }
-.modalBody .tabs button:nth-child(3n + 1) {
-  margin: 0 0.75rem 1.5rem 0;
-}
-.modalBody .tabs button:nth-child(3n) {
-  margin: 0 0 1.5rem 0.75rem;
+.modalBody .tabs button {
+  margin: 0 0 1.5rem;
 }
 .locationForm button {
   width: 100%;
@@ -455,6 +459,19 @@ body {
 .locationGeo button {
   width: auto;
 }
+.locationMap p {
+  margin:0;
+  padding: 1.5rem 0;
+}
+.mapLocationForm .mapLocationInput {
+  padding-right: 0.75rem;
+}
+.mapLocationForm .mapLocationBtn {
+  padding-left: 0.75rem;
+}
+.mapLocationBtn button {
+  text-align: center;
+}
 .inputField {
   position: relative;
   padding: 0;
@@ -479,7 +496,7 @@ body {
 .inputField input:-internal-autofill-selected {
   background-color: #fff !important;
 }
-.inputField input:focus {
+.inputField input:focus, .inputField input:not(:placeholder-shown) {
   outline: none;
   border-bottom: 0.1rem solid #00B3F0;
   box-shadow: 0 0.1rem 0 0 #00B3F0;
@@ -547,8 +564,12 @@ body {
   .wind {
     flex-wrap: wrap;
   }
-  .predWindSpeed, .predWindDirection, .predRainDrop {
-    flex: 0 1 50%
+  .predWindSpeed {
+    flex: 0 1 50%;
+    justify-content: flex-start;
+  }
+  .predRainDrop, .predUvIndex {
+    flex: 0 1 25%;
   }
 }
 @media (min-width: 768px) {
@@ -567,6 +588,15 @@ body {
     .loaderFullScreen img {
       top: calc(50% - 23rem);
       width: 46rem;
+    }
+    .modalBody .tabs button:nth-child(1n) {
+      margin: 0 0.75rem 1.5rem;
+    }
+    .modalBody .tabs button:nth-child(3n + 1) {
+      margin: 0 0.75rem 1.5rem 0;
+    }
+    .modalBody .tabs button:nth-child(3n) {
+      margin: 0 0 1.5rem 0.75rem;
     }
     .locationFormAuto {
       padding-right: 0.75rem;
@@ -593,6 +623,25 @@ body {
     .modalContent {
       max-width: calc(80rem - 3rem);
     }
+    .predWindDirection img {
+      width: 3rem;
+      top:1rem;
+    }
+    .d-desktop {
+      display: flex;
+    }
+}
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .predWindSpeed {
+    flex: 0 1 50%;
+    justify-content: flex-start;
+  }
+  .predRainDrop, .predUvIndex {
+    flex: 0 1 25%;
+  }
+  .d-desktop {
+    display: none;
+  }
 }
 @media (min-width: 1600px) {
     .weatherContainer {

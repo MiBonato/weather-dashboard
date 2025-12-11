@@ -126,6 +126,14 @@ export const FormView = ({ onClose }) => {
   }, [query]);
 
   useEffect(() => {
+    if(activeTab !== TABS.SEARCH){
+      setQuery('');
+      setResults([]);
+      setErrorSearch('');
+    }
+  })
+
+  useEffect(() => {
     if (!errorSearch) return;
     toast.error(errorSearch);
   }, [errorSearch]);
@@ -138,7 +146,7 @@ export const FormView = ({ onClose }) => {
 
   return (
     <div className="locationForm flex s-col">
-      <div className="tabs flex s-row w-100">
+      <div className="tabs flex s-col m-row w-100">
         {/* Onglet 1 : auto-complétion */}
         <button
           type="button"

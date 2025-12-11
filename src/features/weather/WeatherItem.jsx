@@ -41,17 +41,6 @@ export const WeatherItem = ({ location }) => {
     const iconUvs = getUvIndexLevel(currentUv)
     const currentPrecipitation = getNearestHourlyValue(weather.hourly, 'precipitation', date)
 
-    /* 
-    todo : 
-
-    fixer responsive section du milieu
-
-    modale : système d'onglet pour
-    - search
-    - localiser moi
-    - entrer coordonée (new)
-    */
-
     return (
         <div className={`weatherItem ` + (isClosing ? 'closing' : '' )}>
             <div className="fadeIn w-100 flex jc-center ai-center">
@@ -79,19 +68,19 @@ export const WeatherItem = ({ location }) => {
                     </div>
                 </div>
                 <div className="skyInfo flex s-row jc-center w-100">
-                    <div className="predWindSpeed flex w-33 jc-center">
+                    <div className="predWindSpeed flex w-33 m-w-50 l-w-33 jc-center">
                         <img src={`${iconWind.src}.svg`} alt={`${iconWind.alt}`} />
                         <span>{current.windspeed}km/h</span>
                         <div className="predWindDirection flex jc-center">
                             <img src="compass.svg" alt="wind direction" className="wind-icon" style={{ transform: `rotate(${current.winddirection}deg)`}}/>
                         </div>
                     </div> 
-                    <div className="predRainDrop flex w-33 jc-center">
-                        <img src="raindrop.svg" alt="raindrop" />
+                    <div className="predRainDrop flex w-33 m-w-25 l-w-33 jc-center">
+                        <img src="rain-height.svg" alt="précipitation" />
                         <span>{currentPrecipitation}mm</span>
                     </div>
-                    <div className="predUvIndex flex w-33 jc-center">
-                        {current.is_day ? <><img src={`${iconUvs.src}.svg`} alt={`${iconUvs.alt}`} /></> : <img src="starry-night.svg" alt="Nuit - pas d'UV" /> }
+                    <div className="predUvIndex flex w-33 m-w-25 l-w-33 jc-center">
+                        <span className='d-desktop'>Index UV</span>{current.is_day ? <><img src={`${iconUvs.src}.svg`} alt={`${iconUvs.alt}`} /></> : <img src="starry-night.svg" alt="Nuit - pas d'UV" /> }
                     </div>
                 </div>
                 <div className="weatherDetailContainer">
