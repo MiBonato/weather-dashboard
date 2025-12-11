@@ -126,12 +126,12 @@ export const FormView = ({ onClose }) => {
   }, [query]);
 
   useEffect(() => {
-    if(activeTab !== TABS.SEARCH){
+    if (activeTab !== TABS.SEARCH) {
       setQuery('');
       setResults([]);
       setErrorSearch('');
     }
-  })
+  }, [activeTab]);
 
   useEffect(() => {
     if (!errorSearch) return;
