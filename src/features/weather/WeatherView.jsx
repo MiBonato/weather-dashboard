@@ -14,17 +14,28 @@ export const WeatherView = () => {
 
   const hasInitialFetchRun = useRef(false);
   const itemsRef = useRef({});
+  const prevLengthRef = useRef(0);
 
   useEffect(() => {
-    if (!data || data.length === 0) return;
+  if (!data) return;
 
-    const last = data[data.length - 1];
-    const node = itemsRef.current[last.id];
+  const currentLength = data.length;
+  const previousLength = prevLengthRef.current;
 
-    if (node) {
-      node.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  }, [data]);
+  // mettre à jour la longueur 
+  prevLengthRef.current = currentLength;
+
+  // no scroll si pas ajout
+  if (currentLength === 0 || currentLength <= previousLength) return;
+
+  const last = data[currentLength - 1];
+  const node = itemsRef.current[last.id];
+
+  if (node) {
+    node.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}, [data]);
+
 
   useEffect(() => {
     if (!data || data.length === 0 || hasInitialFetchRun.current) return;
