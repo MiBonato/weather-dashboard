@@ -20,11 +20,18 @@ function App() {
   const openTutorialModal = () => setModalType('tutorial');
   const closeModal = () => setModalType(null);
 
-  
+  const hour = new Date().getHours();
+  let currentBackground = "bg-day";
+
+  if (hour >= 5 && hour < 8) currentBackground = "bg-sunrise";
+  else if (hour >= 8 && hour < 17) currentBackground = "bg-day";
+  else if (hour >= 17 && hour < 20) currentBackground = "bg-sunset";
+  else currentBackground = "bg-night";
+
   return (
     <>
       <Header onOpenModal={openLocationModal} onOpenTutorial={openTutorialModal} />
-      <main className="mainContent">
+      <main className={`mainContent  ${currentBackground}`}>
         {(!data || data.length === 0 ) && <Tutorial /> }
         <WeatherView />
       </main>

@@ -12,6 +12,7 @@ export const WeatherItem = ({ location }) => {
     const dispatch = useDispatch();
     const { id, label, weather } = location;
     const [isClosing, setIsClosing] = useState(false);
+    
     // securité rechargement state vide
     if (!weather || !weather.current_weather || !weather.hourly) {
         return (
@@ -53,7 +54,7 @@ export const WeatherItem = ({ location }) => {
     */
 
     return (
-        <div className={`weatherItem flex w-100 m-w-50 l-w-33 ` + (isClosing ? 'closing' : '' )}>
+        <div className={`weatherItem ` + (isClosing ? 'closing' : '' )}>
             <div className="fadeIn w-100 flex jc-center ai-center">
                 <div className="removeItem w-100" onClick={handleRemove}><img src="close-x.svg" alt="Fermer" className="close-icon"/></div>
                 <div className="predTtitle w-100">{label}</div>
@@ -88,10 +89,10 @@ export const WeatherItem = ({ location }) => {
                     </div> 
                     <div className="predRainDrop flex w-33 jc-center">
                         <img src="raindrop.svg" alt="raindrop" />
-                        <span>{currentPrecipitation} mm</span>
+                        <span>{currentPrecipitation}mm</span>
                     </div>
                     <div className="predUvIndex flex w-33 jc-center">
-                        {current.is_day ? <><span>UV</span><img src={`${iconUvs.src}.svg`} alt={`${iconUvs.alt}`} /></> : <img src="starry-night.svg" alt="Nuit - pas d'UV" /> }
+                        {current.is_day ? <><img src={`${iconUvs.src}.svg`} alt={`${iconUvs.alt}`} /></> : <img src="starry-night.svg" alt="Nuit - pas d'UV" /> }
                     </div>
                 </div>
                 <div className="weatherDetailContainer">

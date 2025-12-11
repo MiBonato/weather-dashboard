@@ -41,6 +41,7 @@ body {
   padding: 0;
 }
 .header {
+  position: fixed;
   top: 0;
   width: calc(100% - 3rem);
   height: 6rem;
@@ -64,7 +65,7 @@ body {
   border-radius: 2.25rem;
   padding: 0;
   color: #fff;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   line-height: 4.5rem;
   cursor: pointer;
@@ -73,8 +74,41 @@ body {
   outline: none;
 }
 .mainContent {
-  background-color: #00B3F0;
   min-height: calc(100vh - 11.7rem);
+  margin-top: 6rem;
+}
+.bg-sunrise {
+  background: linear-gradient(
+    to bottom,
+    #4a3aff 0%,
+    #ff7ae6 40%,
+    #ffb36b 70%,
+    #ffeaa7 100%
+  );
+}
+.bg-day {
+  background: linear-gradient(
+    to bottom,
+    #48a7ff 0%,
+    #7fcaff 50%,
+    #e2f3ff 100%
+  );
+}
+.bg-sunset {
+  background: linear-gradient(
+    to bottom,
+    #ff9a3c 0%,
+    #ff5e62 40%,
+    #9c27b0 100%
+  );
+}
+.bg-night {
+  background: linear-gradient(
+    to bottom,
+    #0d1b2a 0%,
+    #1b263b 50%,
+    #000814 100%
+  );
 }
 .tutorial {
   max-width: 102.4rem;
@@ -264,6 +298,7 @@ body {
 .weatherDetailHours > div {
   padding: 1rem 0 0;
   line-height: 3rem;
+  font-size: 1.4rem;
   font-weight: 700;
 }
 .weatherDetailHours > div img {
@@ -292,6 +327,7 @@ body {
   font-size: 2rem;
 }
 .swiper-button-prev, .swiper-button-next {
+  top:calc(50% - 0.5rem) !important;
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -498,10 +534,10 @@ body {
     .predWindSpeed, .predRainDrop, .predUvIndex {
       font-size: 2rem;
     }
-    .weatherItem:nth-child(2n + 1) > div {
+    .weatherList > div:nth-child(2n + 1) .weatherItem > div {
       margin: 0 00.75rem 1.5rem 0;
     }
-    .weatherItem:nth-child(2n) > div {
+    .weatherList > div:nth-child(2n) .weatherItem > div {
       margin: 0 0 1.5rem 0.75rem;
     }
     .loaderFullScreen img {
@@ -517,13 +553,13 @@ body {
     }
 }
 @media (min-width: 1200px) {
-    .weatherItem:nth-child(1n) > div {
+    .weatherList > div:nth-child(1n) .weatherItem > div {
       margin: 0 0.75rem 1.5rem;
     }
-    .weatherItem:nth-child(3n + 1) > div {
+    .weatherList > div:nth-child(3n + 1) .weatherItem > div {
       margin: 0 0.75rem 1.5rem 0;
     }
-    .weatherItem:nth-child(3n) > div {
+    .weatherList > div:nth-child(3n) .weatherItem > div {
       margin: 0 0 1.5rem 0.75rem;
     }
     .loaderFullScreen img {

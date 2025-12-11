@@ -79,29 +79,33 @@ export const WeatherDetail = ({ hourly, daily, currentTime }) => {
               </div>
               <div className="w-50">{data.temperature}°C</div>
             </div>
-            <div className="w-100 flex s-row jc-center">
-              <div className="w-50 flex jc-end">
-                <img src={`${iconWind.src}.svg`} alt={`${iconWind.alt}`} width="30" height="30" />
-              </div>
-              <div className="w-50">{data.windspeed} km/h</div>
-            </div>
+
             <div className="w-100 flex s-row jc-center">
               <div className="w-50 flex jc-end">
                 <img src={`${iconCover.src}.svg`} alt={`${iconCover.alt}`} width="30" height="30" />
               </div>
               <div className="w-50">{data.cloudcover}%</div>
             </div>
+
             <div className="w-100 flex s-row jc-center">
               <div className="w-50 flex jc-end">
                 {data.isDay ? <img src={`${iconUvs.src}.svg`} alt={`${iconUvs.alt}`} /> : <img src="starry-night.svg" alt="Nuit - pas d'UV" /> }
               </div>
-              <div className="w-50">{data.uv_index} UVs</div>
+              <div className="w-50">{data.uv_index}UV</div>
             </div>
+
+            <div className="w-100 flex s-row jc-center">
+              <div className="w-50 flex jc-end">
+                <img src={`${iconWind.src}.svg`} alt={`${iconWind.alt}`} width="30" height="30" />
+              </div>
+              <div className="w-50">{data.windspeed}km/h</div>
+            </div>
+
             <div className="w-100 flex s-row jc-center">
               <div className="w-50 flex jc-end">
                 <img src="raindrop.svg" alt="pluie en milimètre" width="30" height="30" />
               </div>
-              <div className="w-50">{data.precipitation} mm</div>
+              <div className="w-50">{data.precipitation}mm</div>
             </div>
           </div>
         </div>

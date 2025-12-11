@@ -13,14 +13,26 @@ export const WeatherView = () => {
   const { loading, data, error } = useSelector((state) => state.weather);
 
   const hasInitialFetchRun = useRef(false);
+  const itemsRef = useRef({});
+
+  useEffect(() => {
+    if (!data || data.length === 0) return;
+
+    const last = data[data.length - 1];
+    const node = itemsRef.current[last.id];
+
+    if (node) {
+      node.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [data]);
 
   useEffect(() => {
     if (!data || data.length === 0 || hasInitialFetchRun.current) return;
     hasInitialFetchRun.current = true;
 
     data.forEach((loc) => dispatch(fetchWeather(loc)));
-
-    /*const toFetch = [...data];
+    
+/*const toFetch = [...data];
 
     let i = 0;
     const intervalId = setInterval(() => {
@@ -80,9 +92,21 @@ export const WeatherView = () => {
     <div className="weatherContainer flex">
       <div className="weatherList flex w-100 jc-start">
         {data.length > 0 && (
-          <>
+           <>
             {data.map((location) => (
-              <WeatherItem key={location.id} location={location} />
+              <div
+                className="flex w-100 m-w-50 l-w-33"
+                key={location.id}
+                ref={(el) => {
+                  if (el) {
+                    itemsRef.current[location.id] = el;
+                  } else {
+                    delete itemsRef.current[location.id];
+                  }
+                }}
+              >
+                <WeatherItem location={location} />
+              </div>
             ))}
           </>
         )}

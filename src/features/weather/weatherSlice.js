@@ -35,7 +35,7 @@ const weatherSlice = createSlice({
         })
         builder.addCase(fetchWeather.fulfilled, (state, action ) => {
             state.loading = false
-
+            
             const newLocation = action.payload
             const index = state.data.findIndex(item => item.id === newLocation.id)
             index !== -1 ? state.data[index] = newLocation : state.data.push(newLocation)
