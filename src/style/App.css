@@ -262,7 +262,7 @@ body {
   margin-right: 1rem;
 }
 .predUvIndex img {
-  width: 5rem;
+  width: 3rem;
   height: auto;
 }
 .weatherDetailContainer {
@@ -626,6 +626,9 @@ body {
     .predWindDirection img {
       width: 3rem;
       top:1rem;
+    }
+    .predUvIndex img {
+      width: 5rem;
     }
     .d-desktop {
       display: flex;
